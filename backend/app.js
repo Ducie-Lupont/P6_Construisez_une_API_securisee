@@ -2,7 +2,7 @@ const express = require('express')
 
 const app = express()
 
-app.use((res, res, next) => {
+app.use((req, res, next) => {
     console.log('requete receptionnee')
     next()
 })
