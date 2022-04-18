@@ -1,11 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
+require('dotenv').config()
 
-const stuffRoutes = require('./routes/stuff.js')
+const saucesRoutes = require('./routes/sauces.js')
 const userRoutes = require('./routes/user')
 
-mongoose.connect('mongodb+srv://test:test@lessonscluster.cltzk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.LOGIN}:${process.env.PW}@piiquante.cltzk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -24,7 +25,7 @@ app.use((req, res, next) => {
     next()
 })
 app.use('/images', express.static(path.join(__dirname, 'images')))
-app.use('/api/stuff', stuffRoutes)
+app.use('/api/sauces', saucesRoutes)
 app.use('/api/auth', userRoutes)
 
 module.exports = app
