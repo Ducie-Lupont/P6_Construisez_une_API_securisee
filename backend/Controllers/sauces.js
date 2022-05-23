@@ -87,16 +87,14 @@ exports.userLikeSauces = (req, res, next) => {
     Sauces.findOne({ _id: req.params.id })
         .then((sauces) => {
             if (req.body.like === -1) {
-                if (sauces.usersDisliked.includes(req.body.userId)) { }
-                else {
+                if (!sauces.usersDisliked.includes(req.body.userId)){
                     sauces.dislikes++
                     sauces.usersDisliked.push(req.body.userId)
                     sauces.save()
                 }
             }
             else if (req.body.like === 1) {
-                if (sauces.usersLiked.includes(req.body.userId)) { }
-                else {
+                if (!sauces.usersLiked.includes(req.body.userId)) {
                     sauces.likes++
                     sauces.usersLiked.push(req.body.userId)
                     sauces.save()

@@ -6,7 +6,7 @@ require('dotenv').config()
 const saucesRoutes = require('./routes/sauces.js')
 const userRoutes = require('./routes/user')
 
-mongoose.connect(`mongodb+srv://${process.env.LOGIN}:${process.env.PW}@piiquante.cltzk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+mongoose.connect(`mongodb+srv://${process.env.LOGIN}:${process.env.PW}@piiquante.cltzk.mongodb.net/${process.env.DATABASENAME}?retryWrites=true&w=majority`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
