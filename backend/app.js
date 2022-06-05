@@ -8,7 +8,7 @@ const saucesRoutes = require('./routes/sauces.js')
 const userRoutes = require('./routes/user')
 
 //Lien avec la base de données
-mongoose.connect(`mongodb+srv://${process.env.LOGIN}:${process.env.PW}@piiquante.cltzk.mongodb.net/${process.env.DATABASENAME}?retryWrites=true&w=majority`,
+mongoose.connect(`mongodb+srv://${process.env.LOGIN}:${process.env.PW}@${process.env.DATABASENAME}.cltzk.mongodb.net/?retryWrites=true&w=majority`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
