@@ -5,6 +5,7 @@ const saucesCtrl = require('../Controllers/sauces')
 const auth = require('../middleware/auth')
 const multer = require('../middleware/multer-config')
 
+//Quelles routes emprunter selon le type de requêtes    /!\ l'ordre des éléments entre parenthèses est important /!\
 router.post('/', auth, multer, saucesCtrl.createSauces)
 router.put('/:id', auth, multer, saucesCtrl.modifySauces)
 router.delete('/:id', auth, saucesCtrl.deleteSauces)

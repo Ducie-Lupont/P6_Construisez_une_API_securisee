@@ -2,6 +2,7 @@ const Sauces = require('../models/Sauces')
 const fs = require('fs')
 const { getUserId } = require('../middleware/auth')
 
+//création d'une sauce
 exports.createSauces = (req, res, next) => {
     const saucesObject = JSON.parse(req.body.sauce)
     delete saucesObject._id
@@ -9,11 +10,12 @@ exports.createSauces = (req, res, next) => {
         ...saucesObject,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
-    sauces.save()
+    sauces.save()//sauvegarde de la sauce créée
         .then(() => res.status(201).json({ message: 'Post saved successfully!' }))
         .catch((error) => res.status(400).json({ error: error }))
 }
 
+//Modification d'une sauce
 exports.modifySauces = (req, res, next) => {
     const userId = getUserId(req)
     if (req.file) {
@@ -53,6 +55,7 @@ exports.modifySauces = (req, res, next) => {
 
 }
 
+//suppression d'une sauce
 exports.deleteSauces = (req, res, next) => {
     const userId = getUserId(req)
     Sauces.findOne({ _id: req.params.id })
@@ -71,18 +74,21 @@ exports.deleteSauces = (req, res, next) => {
 
 }
 
+//chargement d'une sauce précise(affichage des détails d'une sauce par exemple)
 exports.findOneSauces = (req, res, next) => {
     Sauces.findOne({ _id: req.params.id })
         .then((sauces) => res.status(200).json(sauces))
         .catch((error) => res.status(404).json({ error: error }))
 }
 
+//charge toutes les sauces
 exports.findSauces = (req, res, next) => {
     Sauces.find()
         .then((sauces) => res.status(200).json(sauces))
         .catch((error) => res.status(400).json({ error: error }))
 }
 
+//Gestion des likes
 exports.userLikeSauces = (req, res, next) => {
     Sauces.findOne({ _id: req.params.id })
         .then((sauces) => {

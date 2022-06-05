@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 
 module.exports = (req, res, next) => {
-    try {
+    try {//vérification de la validité du token d'authentification
         const token = req.headers.authorization.split(' ')[1]
         const decodedToken = jwt.verify(token, process.env.TOKEN)
         const userId = decodedToken.userId
@@ -10,14 +10,14 @@ module.exports = (req, res, next) => {
         } else {
             next()
         }
-    } catch (error) {
+    } catch (error) {//Si le token n'est pas le bon>
         console.log(error)
         res.status(401).json({ error: 'Unauthentified Request !' })
     }
 }
 
 module.exports.getUserId = (req) => {
-    try {
+    try {//Vérification de l'utilisateur connecté
         const token = req.headers.authorization.split(' ')[1]
         const decodedToken = jwt.verify(token, process.env.TOKEN)
         const userId = decodedToken.userId
