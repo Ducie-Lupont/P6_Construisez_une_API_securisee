@@ -43,4 +43,4 @@ Thumbs.db
 .vscode/settings.json
 
 # images
-./backend/images/
+backend/images
