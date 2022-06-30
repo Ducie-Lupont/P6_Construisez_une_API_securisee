@@ -4,8 +4,8 @@ const path = require('path')
 require('dotenv').config()//requête des données dans le fichier .env
 
 //routes nécessaires, pour envoyer les bonnes requêtes au bon endroit
-const saucesRoutes = require('./routes/sauces.js')
-const userRoutes = require('./routes/user')
+const saucesRoutes = require('./routes/sauces.routes')
+const userRoutes = require('./routes/user.routes')
 
 //Lien avec la base de données
 mongoose.connect(`mongodb+srv://${process.env.LOGIN}:${process.env.PW}@${process.env.DATABASENAME}.cltzk.mongodb.net/?retryWrites=true&w=majority`,
