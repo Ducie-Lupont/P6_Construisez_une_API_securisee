@@ -1,11 +1,11 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const User = require("../models/User.model");
+const User = require("../models/user.model");
 
 //envoi des données d'un nouvel utilisateur
-exports.signup = (req, res, next) => {
-  bcrypt
+exports.signup = (req, res) => {
+  bcrypt //bcrypt va saler & hasher le mot de passe, pour que ce dernier ne soit pas visible en clair dans la base de données.
     .hash(req.body.password, 10)
     .then((hash) => {
       const user = new User({
@@ -23,7 +23,7 @@ exports.signup = (req, res, next) => {
 };
 
 //Login d'un usilisateur
-exports.login = (req, res, next) => {
+exports.login = (req, res) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {

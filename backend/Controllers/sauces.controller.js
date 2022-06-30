@@ -1,4 +1,4 @@
-const Sauces = require("../models/Sauces.model");
+const Sauces = require("../models/sauces.model");
 const fs = require("fs");
 const { getUserId } = require("../middleware/auth.middleware");
 
