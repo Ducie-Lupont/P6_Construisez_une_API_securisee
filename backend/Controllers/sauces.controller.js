@@ -1,6 +1,6 @@
-const Sauces = require('../models/Sauces')
+const Sauces = require('../models/Sauces.model')
 const fs = require('fs')
-const { getUserId } = require('../middleware/auth')
+const { getUserId } = require('../middleware/auth.middleware')
 
 //création d'une sauce
 exports.createSauces = (req, res, next) => {

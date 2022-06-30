@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const saucesCtrl = require('../Controllers/sauces')
-const auth = require('../middleware/auth')
-const multer = require('../middleware/multer-config')
+const saucesCtrl = require('../Controllers/sauces.controller')
+const auth = require('../middleware/auth.middleware')
+const multer = require('../middleware/multer-config.middleware')
 
-//Quelles routes emprunter selon le type de requêtes    /!\ l'ordre des éléments entre parenthèses est important /!\
+//Quelles routes emprunter selon le type de requêtes    /!\ l'ordre des éléments entre parenthèses est important /!\//
 router.post('/', auth, multer, saucesCtrl.createSauces)
 router.put('/:id', auth, multer, saucesCtrl.modifySauces)
 router.delete('/:id', auth, saucesCtrl.deleteSauces)
